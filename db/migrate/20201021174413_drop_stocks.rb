@@ -1,6 +1,6 @@
 class DropStocks < ActiveRecord::Migration[5.1]
   def up
-    drop_table :stocks
+    drop_table :stocks if table_exists? :stocks
   end
 
   def down
