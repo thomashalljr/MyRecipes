@@ -91,7 +91,7 @@ config.webpacker.check_yarn_integrity = false
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  
+
   config.web_socket_server_url = "wss://enjoymyrecipes.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://enjoymyrecipes.herokuapp.com', 'http://enjoymyrecipes.herokuapp.com']
 
@@ -100,8 +100,8 @@ config.webpacker.check_yarn_integrity = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
+    :user_name => 'apikey',
+    :password => ENV['SENDGRID_API_KEY'],
     :domain => 'enjoymyrecipes.herokuapp.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
