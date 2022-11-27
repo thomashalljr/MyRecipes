@@ -24,3 +24,5 @@ test:
 production:
   <<: *default
   adapter: postgresql
+  username: myrecipes
+  password: <%= ENV["DATABASE_PASSWORD"] %>
