@@ -1,0 +1,46 @@
+require:
+  - standard
+  - rubocop-minitest
+  - rubocop-rails
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "db/migrate/*"
+    - "db/schema.rb"
+    - "Gemfile.lock"
+    - "Rakefile"
+    - "config.ru"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "bin/*"
+
+Layout/LineLength:
+  Enabled: true
+  Max: 200
+
+Minitest/MultipleAssertions:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - "production"
+    - "test"
+    - "development"
+
+# find_each has a side effect of dropping orders so we can't just use this
+# anywhere
+Rails/FindEach:
+  Enabled: false
+
+Rails/WhereExists:
+  EnforcedStyle: where
+
+Rails/ActionControllerTestCase:
+  Enabled: false
