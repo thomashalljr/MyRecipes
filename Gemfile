@@ -39,6 +39,10 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara', '~> 2.13'
   gem 'rails-controller-testing'
+  gem "rubocop", "~> 1.24"
+  gem "rubocop-rails", "~> 2.13"
+  gem "rubocop-minitest"
+  gem "standard"
   gem 'selenium-webdriver'
   gem 'sqlite3'
 end
