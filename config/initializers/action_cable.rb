@@ -4,7 +4,7 @@
 
 return unless Rails.env.production?
 
-require 'action_cable/subscription_adapter/redis'
+require "action_cable/subscription_adapter/redis"
 
 module ActionCableRedisListenerPatch
   private

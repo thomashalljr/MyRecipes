@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-
   before_action :set_recipe, only: [:show, :edit, :update, :destroy, :like]
   before_action :authenticate_chef!, except: [:index, :show]
   before_action :require_same_user_or_admin, only: [:edit, :update, :destroy]
@@ -17,6 +16,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def edit
+  end
+
   def create
     @recipe = Recipe.new recipe_params
     @recipe.chef = current_chef
@@ -29,9 +31,6 @@ class RecipesController < ApplicationController
     else
       render "new"
     end
-  end
-
-  def edit
   end
 
   def update
@@ -56,35 +55,34 @@ class RecipesController < ApplicationController
 
     if like.valid?
       flash[:success] = "Your selection was successful"
-      redirect_back(fallback_location: recipe_path(@recipe))
     else
       flash[:danger] = "You can only like/dislike a recipe once"
-      redirect_back(fallback_location: recipe_path(@recipe))
     end
+    redirect_back(fallback_location: recipe_path(@recipe))
   end
 
   private
 
-    def set_recipe
-      @recipe = Recipe.find params[:id]
-    end
+  def set_recipe
+    @recipe = Recipe.find params[:id]
+  end
 
-    def recipe_params
-      params.require(:recipe).permit(:name, :description, :image, :remove_image, {recipe_ingredients_attributes: [:id, :ingredient_id, :_destroy]} )
-    end
+  def recipe_params
+    params.require(:recipe).permit(:name, :description, :image, :remove_image, {recipe_ingredients_attributes: [:id, :ingredient_id, :_destroy]})
+  end
 
-    def require_same_user_or_admin
-      unless current_chef == @recipe.chef or current_chef.admin?
-        flash[:danger] = "You can only edit or delete your own recipes"
-        redirect_to recipes_path
-      end
+  def require_same_user_or_admin
+    unless (current_chef == @recipe.chef) || current_chef.admin?
+      flash[:danger] = "You can only edit or delete your own recipes"
+      redirect_to recipes_path
     end
+  end
 
-    def add_cloudinary_image
-      if params[:recipe][:image].present?
-        preloaded = Cloudinary::PreloadedFile.new params[:recipe][:image]
-        raise "Invalid image upload" if !preloaded.valid?
-        @recipe.image = preloaded.identifier
-      end
+  def add_cloudinary_image
+    if params[:recipe][:image].present?
+      preloaded = Cloudinary::PreloadedFile.new params[:recipe][:image]
+      raise "Invalid image upload" if !preloaded.valid?
+      @recipe.image = preloaded.identifier
     end
+  end
 end

@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   before_action :authenticate_chef!
 
   def create
@@ -15,11 +14,12 @@ class MessagesController < ApplicationController
   end
 
   private
-    def message_params
-      params.require(:message).permit(:content)
-    end
 
-    def render_message message
-      render(partial: "message", locals: { message: message })
-    end
+  def message_params
+    params.require(:message).permit(:content)
+  end
+
+  def render_message message
+    render(partial: "message", locals: {message: message})
+  end
 end

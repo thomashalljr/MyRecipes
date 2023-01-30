@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def configure_permitted_parameters
-      strong_params = [:chefname]
-      devise_parameter_sanitizer.permit(:sign_up, keys: strong_params)
-      devise_parameter_sanitizer.permit(:account_update, keys: strong_params)
-    end
+  def configure_permitted_parameters
+    strong_params = [:chefname]
+    devise_parameter_sanitizer.permit(:sign_up, keys: strong_params)
+    devise_parameter_sanitizer.permit(:account_update, keys: strong_params)
+  end
 end

@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   before_action :authenticate_chef!
 
   def create
@@ -17,7 +16,7 @@ class CommentsController < ApplicationController
 
   private
 
-    def comment_params
-      params.require(:comment).permit(:description)
-    end
+  def comment_params
+    params.require(:comment).permit(:description)
+  end
 end

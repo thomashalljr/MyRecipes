@@ -1,10 +1,20 @@
 class IngredientsController < ApplicationController
-
   before_action :set_ingredient, only: [:edit, :update, :show]
   before_action :require_admin, except: [:show, :index]
 
+  def index
+    @ingredients = Ingredient.paginate(page: params[:page], per_page: 5)
+  end
+
+  def show
+    @ingredient_recipes = @ingredient.recipes.paginate(page: params[:page], per_page: 5)
+  end
+
   def new
     @ingredient = Ingredient.new
+  end
+
+  def edit
   end
 
   def create
@@ -18,9 +28,6 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @ingredient.update(ingredient_params)
       flash[:success] = "Ingredient was updated successfully"
@@ -30,28 +37,20 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def show
-    @ingredient_recipes = @ingredient.recipes.paginate(page: params[:page], per_page: 5)
-  end
-
-  def index
-    @ingredients = Ingredient.paginate(page: params[:page], per_page: 5)
-  end
-
   private
 
-    def ingredient_params
-      params.require(:ingredient).permit(:name)
-    end
+  def ingredient_params
+    params.require(:ingredient).permit(:name)
+  end
 
-    def set_ingredient
-      @ingredient = Ingredient.find(params[:id])
-    end
+  def set_ingredient
+    @ingredient = Ingredient.find(params[:id])
+  end
 
-    def require_admin
-      if !chef_signed_in? || (chef_signed_in? and !current_chef.admin?)
-        flash[:danger] = "Only admin users can perform that action"
-        redirect_to ingredients_path
-      end
+  def require_admin
+    if !chef_signed_in? || (chef_signed_in? && !current_chef.admin?)
+      flash[:danger] = "Only admin users can perform that action"
+      redirect_to ingredients_path
     end
+  end
 end

@@ -7,12 +7,10 @@ module ApplicationCable
     end
 
     private
-      def find_verified_chef
-        if verified_chef = Chef.find_by(id: cookies.encrypted[:chef_id])
-          verified_chef
-        else
-          reject_unauthorized_connection
-        end
-      end
+
+    def find_verified_chef
+      verified_chef = Chef.find_by(id: cookies.encrypted[:chef_id])
+      verified_chef || reject_unauthorized_connection
+    end
   end
 end

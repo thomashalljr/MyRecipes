@@ -5,7 +5,8 @@ class Chefs::SessionsController < Devise::SessionsController
   end
 
   private
-    def chef_id
-      Chef.select(:id).where("email = ?", params[:chef][:email]).first.try(:id)
-    end
+
+  def chef_id
+    Chef.select(:id).where(email: params[:chef][:email]).first.try(:id)
+  end
 end
