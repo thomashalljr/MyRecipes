@@ -8,6 +8,7 @@ end
 ruby "2.7.3"
 
 gem "bcrypt", "~> 3.1.7"
+gem "bootsnap", require: false
 gem "bootstrap", "~> 4.4.1"
 gem "carrierwave", "~> 1.0"
 gem "cloudinary", "1.9.1"
@@ -22,7 +23,7 @@ gem "loofah", ">= 2.2.3"
 gem "nokogiri", "~> 1.10.1"
 gem "puma", "~> 3.7"
 gem "rack", ">= 2.0.6"
-gem "rails", "~> 5.1.6"
+gem "rails", "~> 5.2.8.1"
 gem "ransack"
 gem "react-rails"
 gem "rubyzip", ">= 1.2.2"
@@ -32,7 +33,7 @@ gem "sprockets", ">= 3.7.2"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "webpacker", "~> 3.5"
-gem "will_paginate", "3.1.0"
+gem "will_paginate", "3.1.7"
 gem "will_paginate-bootstrap4"
 
 group :development, :test do

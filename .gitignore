@@ -36,3 +36,6 @@ yarn-debug.log*
 
 # Compiled assets
 public/dev-assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
