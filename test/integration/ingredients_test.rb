@@ -31,7 +31,7 @@ class IngredientsTest < ActionDispatch::IntegrationTest
     assert_template "ingredients/show"
     assert_match @ingredient.name.capitalize, response.body
     assert_match @recipe.description, response.body
-    assert_match @chef.chefname, response.body
+    assert_match @chef.chefname.capitalize, response.body
     assert_select "a[href=?]", edit_recipe_path(@recipe), text: "Edit this recipe"
     assert_select "a[href=?]", recipe_path(@recipe), text: "Delete this recipe"
   end
@@ -59,7 +59,6 @@ class IngredientsTest < ActionDispatch::IntegrationTest
       post ingredients_path, params: {ingredient: {name: " "}}
     end
     assert_template "ingredients/new"
-    assert_select "h2.panel-title"
-    assert_select "div.panel-body"
+    assert_select ".alert-alert"
   end
 end

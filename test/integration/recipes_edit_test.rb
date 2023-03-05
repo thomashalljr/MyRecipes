@@ -15,8 +15,7 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
     patch recipe_path(@recipe), params: {recipe: {name: " ", description: "some description"}}
 
     assert_template "recipes/edit"
-    assert_select "h2.panel-title"
-    assert_select "div.panel-body"
+    assert_select ".alert-alert"
   end
 
   test "successfully edit a recipe" do

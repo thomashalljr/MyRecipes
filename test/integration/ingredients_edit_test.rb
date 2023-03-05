@@ -17,8 +17,7 @@ class IngredientsEditTest < ActionDispatch::IntegrationTest
     patch ingredient_path(@ingredient), params: {ingredient: {name: " "}}
 
     assert_template "ingredients/edit"
-    assert_select "h2.panel-title"
-    assert_select "div.panel-body"
+    assert_select ".alert-alert"
   end
 
   test "successfully edit an ingredient" do

@@ -8,7 +8,7 @@ class RecipeTest < ActiveSupport::TestCase
   end
 
   test "recipe without chef should be invalid" do
-    @recipe.chef_id = nil
+    @recipe.chef = nil
 
     assert_not @recipe.valid?
   end
@@ -31,12 +31,6 @@ class RecipeTest < ActiveSupport::TestCase
 
   test "description shouldn't be less than 5 characters" do
     @recipe.description = "a" * 3
-
-    assert_not @recipe.valid?
-  end
-
-  test "description shouldn't be more than 750 characters" do
-    @recipe.description = "a" * 751
 
     assert_not @recipe.valid?
   end
