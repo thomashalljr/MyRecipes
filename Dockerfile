@@ -121,13 +121,13 @@ RUN chmod +x /app/bin/* && \
 # The following enable assets to precompile on the build server.  Adjust
 # as necessary.  If no combination works for you, see:
 # https://fly.io/docs/rails/getting-started/existing/#access-to-environment-variables-at-build-time
-ENV SECRET_KEY_BASE 1
 # ENV AWS_ACCESS_KEY_ID=1
 # ENV AWS_SECRET_ACCESS_KEY=1
 
 # Run build task defined in lib/tasks/fly.rake
 ARG BUILD_COMMAND="bin/rails fly:build"
-RUN ${BUILD_COMMAND}
+RUN SECRET_KEY_BASE_DUMMY=1 RAILS_DISABLE_MASTER_KEY_REQUIREMENT=1 \
+    ${BUILD_COMMAND}
 
 # Default server start instructions.  Generally Overridden by fly.toml.
 ENV PORT 8080
