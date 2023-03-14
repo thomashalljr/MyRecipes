@@ -125,9 +125,8 @@ RUN chmod +x /app/bin/* && \
 # ENV AWS_SECRET_ACCESS_KEY=1
 
 # Run build task defined in lib/tasks/fly.rake
-ARG BUILD_COMMAND="bin/rails fly:build"
 RUN SECRET_KEY_BASE_DUMMY=1 RAILS_DISABLE_MASTER_KEY_REQUIREMENT=1 \
-    ${BUILD_COMMAND}
+    bin/rails fly:build
 
 # Default server start instructions.  Generally Overridden by fly.toml.
 ENV PORT 8080
