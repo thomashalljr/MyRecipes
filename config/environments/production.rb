@@ -95,8 +95,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.web_socket_server_url = "wss://enjoymyrecipes.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ["https://enjoymyrecipes.herokuapp.com", "http://enjoymyrecipes.herokuapp.com"]
+  config.action_cable.allowed_request_origins = ["https://myrecipes.fly.dev"]
 
   # SendGrid config on Heroku
   config.action_mailer.default_url_options = {host: "https://enjoymyrecipes.herokuapp.com"}
