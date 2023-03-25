@@ -96,18 +96,4 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_cable.allowed_request_origins = ["https://myrecipes.fly.dev"]
-
-  # SendGrid config on Heroku
-  config.action_mailer.default_url_options = {host: "https://enjoymyrecipes.herokuapp.com"}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
-    user_name: "apikey",
-    password: ENV["SENDGRID_API_KEY"],
-    domain: "enjoymyrecipes.herokuapp.com",
-    address: "smtp.sendgrid.net",
-    port: 587,
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
 end
