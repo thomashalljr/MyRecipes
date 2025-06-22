@@ -68,7 +68,7 @@ RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
 
 FROM build_deps as gems
 
-RUN gem update --system --no-document && \
+RUN gem update --system 3.4.22 --no-document && \
     gem install -N bundler -v ${BUNDLER_VERSION}
 
 COPY Gemfile* ./
