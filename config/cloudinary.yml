@@ -1,19 +1,12 @@
 ---
 development:
-  cloud_name: thomashalljr
-  api_key: '343928756439378'
-  api_secret: xtTM9PVPEIEnxyANfVW98MZUrYQ
-  enhance_image_tag: true
-  static_image_support: false
-production:
-  cloud_name: thomashalljr
-  api_key: '343928756439378'
-  api_secret: xtTM9PVPEIEnxyANfVW98MZUrYQ
-  enhance_image_tag: true
-  static_image_support: true
+  cloud_name: <%= ENV["MYRECIPES_CLOUDINARY_CLOUD_NAME"] %>
+  api_key: <%= ENV["MYRECIPES_CLOUDINARY_API_KEY"] %>
+  api_secret: <%= ENV["MYRECIPES_CLOUDINARY_API_SECRET"] %>
+  enhance_image_tag: <%= ENV["MYRECIPES_CLOUDINARY_ENHANCE_IMAGE_TAG"] %>
+  static_image_support: <%= ENV["MYRECIPES_CLOUDINARY_STATIC_IMAGE_SUPPORT"] %>
+  secure: <%= ENV["MYRECIPES_CLOUDINARY_SECURE"] %>
 test:
-  cloud_name: thomashalljr
-  api_key: '343928756439378'
-  api_secret: xtTM9PVPEIEnxyANfVW98MZUrYQ
-  enhance_image_tag: true
-  static_image_support: false
+  cloud_name: ""
+  api_key: ""
+  api_secret: ""
