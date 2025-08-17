@@ -5,7 +5,3 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
-
-const context = require.context("components", false)
-const ReactRailsUJS = require("react_ujs")
-ReactRailsUJS.useContext(context)

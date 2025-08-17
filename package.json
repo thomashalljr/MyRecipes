@@ -2,13 +2,7 @@
   "name": "myrecipes",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^1.2.1",
-    "@rails/webpacker": "3.5",
-    "babel-preset-react": "^6.24.1",
-    "prop-types": "^15.6.1",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react_ujs": "^2.4.4"
+    "@rails/webpacker": "3.5"
   },
   "devDependencies": {
     "webpack-dev-server": ">=3.1.11"
